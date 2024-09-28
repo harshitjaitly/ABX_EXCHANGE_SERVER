@@ -11,6 +11,5 @@
 {"symbol":"MSFT","buySellIndicator":"B","quantity":20,"price":148,"packetSequence":10},
 {"symbol":"AMZN","buySellIndicator":"B","quantity":10,"price":3000,"packetSequence":11},
 {"symbol":"AMZN","buySellIndicator":"B","quantity":5,"price":2999,"packetSequence":12},
-{"symbol":"AMZN","buySellIndicator":"S","quantity":15,"price":3020,"packetSequence":13},
-{"symbol":"AMZN","buySellIndicator":"S","quantity":10,"price":3015,"packetSequence":14}
+{"symbol":"AMZN","buySellIndicator":"S","quantity":15,"price":3020,"packetSequence":13}
 ]

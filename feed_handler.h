@@ -14,22 +14,25 @@
 #include <cstring>
 #include <ctime>
 #include <iomanip>
-#include <algorithm>  
+#include <algorithm>
 #include <thread>
 #include <sstream>
 #include <fstream>
 
 // Logger Class
-class Logger {
+class Logger
+{
 public:
-    static void log(const std::string& message);
-    static void error(const std::string& message);
+    static void log(const std::string &message);
+    static void error(const std::string &message);
+
 private:
     static std::string getCurrentTime();
 };
 
 // Packet Class
-class Packet {
+class Packet
+{
 public:
     std::string symbol;
     char buySellIndicator;
@@ -37,19 +40,21 @@ public:
     uint32_t price;
     uint32_t packetSequence;
 
-    static Packet parse(const char* buffer);
-    std::string toJSON() const; 
+    static Packet parse(const char *buffer);
+    std::string toJSON() const;
 
     // Overloading the less-than operator for sorting based on packetSequence
-    bool operator<(const Packet& other) const {
+    bool operator<(const Packet &other) const
+    {
         return this->packetSequence < other.packetSequence;
     }
 };
 
 // FeedHandler Class
-class FeedHandler {
+class FeedHandler
+{
 public:
-    FeedHandler(const std::string& serverIP, int port);
+    FeedHandler(const std::string &serverIP, int port);
     ~FeedHandler();
 
     void connectToServer();
@@ -59,19 +64,19 @@ public:
     void requestPacketBySequence(int sequenceNumber);
     void handleMissingSequences();
 
-    void writePacketsToJSON(const std::string& filename); 
+    void writePacketsToJSON(const std::string &filename);
 
 private:
     std::string serverIP_;
     int port_;
     int sock_;
     std::set<int> receivedSequences_;
-    std::vector<Packet> receivedPackets_; 
+    std::vector<Packet> receivedPackets_;
 
     void setSocketTimeout(int timeoutSeconds);
-    void sendRequest(const uint8_t* request, size_t length);
+    void sendRequest(const uint8_t *request, size_t length);
     void receiveData();
-    void parseResponse(char* buffer, int bytesReceived);
+    void parseResponse(char *buffer, int bytesReceived);
 };
 
 #endif // FEED_HANDLER_H

@@ -1,6 +1,3 @@
-
-this is my code for feed_handler.cpp
-
 #include "feed_handler.h"
 #include "config.h"
 
